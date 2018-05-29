@@ -1,0 +1,6 @@
+dash 				Unsatisfied Respondant |Active queries(answered but no action)	| archivesForCustomer| backEnd users | Analytics |LogOut
+
+you Have ___ unanswered queries(float left)										sliders for adjusting no of queries on the page
+				
+				
+
