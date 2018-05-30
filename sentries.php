@@ -198,7 +198,7 @@ if($data[1]=='noImagesYet'){
 echo '
 					<button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="noimg();"> ';}
 else {
-echo '	<button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="document.getElementById'."('id012".$i."').style.display='block'".'">';
+echo '	<button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="document.getElementById'."('id012".$t."').style.display='block'".'">';
 }
 echo '						 View
 						</button>

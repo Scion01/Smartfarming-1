@@ -74,14 +74,23 @@ function underline()
 {
 	document.getElementById('btn').style.textDecoration='underline';
 	document.getElementById('bt').style.textDecoration='none';
+	document.getElementById('bt1').style.textDecoration='none';
 }
 
 function underline1()
 {
 	document.getElementById('bt').style.textDecoration='underline';
 	document.getElementById('btn').style.textDecoration='none';
+	document.getElementById('bt1').style.textDecoration='none';
 }
 
+function underline2()
+{
+	document.getElementById('bt1').style.textDecoration='underline';
+	document.getElementById('btn').style.textDecoration='none';
+	document.getElementById('bt').style.textDecoration='none';
+	swal
+}
 dash();
 
 function dash()
@@ -200,26 +209,31 @@ function generateRefer(){
   input: 'text',
   confirmButtonText: 'Next &rarr;',
   showCancelButton: true,
-  progressSteps: ['1', '2', '3']
+  progressSteps: ['1', '2', '3','4']
 })
 
 var steps = [
-  'Enter the UserId',
-  'Product Name and Product details',
+  'Enter the UserId(Phone No)',
+  'Product Name',
+  'Product Details',
   'Enter Cost'
 ]
 
 swal.queue(steps).then((result) => {
-	var regdataRef = firebase.database().ref('Notifics');
-	var newRegdataRef = regdataRef.push();
+
+	
+	var JSONstring = JSON.stringify(result.value);
+	var splits = JSONstring.split('"');
+	var regdataRef = firebase.database().ref('Recommendation/'+splits[1]);
+	newRegdataRef = regdataRef.push();
 	newRegdataRef.set({
-		notific:JSON.stringify(result.value)
+		isBought: 0, Name: splits[3], Description: splits[5], Cost: splits[7]
 	});
   swal.resetDefaults();
   swal({
   title: 'Thanks!',
   text: 'Creating Recommendation! Please stand By!!',
-  timer: 6000,
+  timer: 4000,
   onOpen: () => {
     swal.showLoading()
   }
@@ -234,6 +248,11 @@ swal.queue(steps).then((result) => {
 });	
 		
 }
+function openInNewTab(url) {
+  var win = window.open(url, '_blank');
+  win.focus();
+}
+ 
 
 				</script>
        
@@ -241,6 +260,8 @@ swal.queue(steps).then((result) => {
 		</head>
 
 		<body>
+			
+
 				<div id="hide"></div>
 				<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" >
   					<header class="mdl-layout__header" style="background-color:  #2e5cb8;">
@@ -256,6 +277,7 @@ swal.queue(steps).then((result) => {
     						<div class="mdl-layout-spacer"></div>
       						<a class="mdl-layout__tab" onclick="generateNotif()" style="cursor: pointer;">Generate Notifications</a>
       						<a id="bt" onclick="pno=0;putRange(); underline1(); " class="mdl-layout__tab" style="cursor: pointer;">Search by Number</a>
+      						<a id="bt1" onclick=" underline2(); openInNewTab('loadTransactions.php');" class="mdl-layout__tab" style="cursor: pointer;">Track Orders</a>
       						<button style="background: #132639; cursor: pointer;" onclick="logOut()" class="mdl-layout__tab">Logout</button>
     					</div>
 				  </header>
@@ -279,7 +301,7 @@ swal.queue(steps).then((result) => {
 						  <div class="timeline" id="timeline">
 
 						  </div>
-
+						  
 
 
   </main>
