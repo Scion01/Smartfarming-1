@@ -60,8 +60,8 @@ firebase.auth().onAuthStateChanged(function(user) {
    	</script>
      <style>
 .demo-card-square.mdl-card {
-  width: 30%;
-  height: 80%;
+  width: 40%;
+  height: auto;
   position: absolute;
   margin-left: 35%;
   padding: 5%;
