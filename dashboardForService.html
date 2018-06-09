@@ -204,31 +204,44 @@ swal.queue(steps).then((result) => {
 		
 }
 
-function generateRefer(){
+function generateRefer(phoneNoFromNotif){
+	var result1;
 				swal.setDefaults({
   input: 'text',
   confirmButtonText: 'Next &rarr;',
   showCancelButton: true,
-  progressSteps: ['1', '2', '3','4']
+  progressSteps: ['1', '2', '3'],
+ 
 })
 
 var steps = [
-  'Enter the UserId(Phone No)',
   'Product Name',
   'Product Details',
   'Enter Cost'
 ]
 
 swal.queue(steps).then((result) => {
-
-	
-	var JSONstring = JSON.stringify(result.value);
+	if (result.value) {
+		result1 =result;
+		swal.resetDefaults();
+    swal({
+      title: 'All done for phone no.: '+phoneNoFromNotif.toString(),
+      html:
+        'Your recommendations: <pre>' +
+          JSON.stringify(result.value) +
+        '</pre>',
+      confirmButtonText: 'Lovely!'
+    }).then((result)=>{
+    	
+  	var JSONstring = JSON.stringify(result1.value);
 	var splits = JSONstring.split('"');
-	var regdataRef = firebase.database().ref('Recommendation/'+splits[1]);
+	var regdataRef = firebase.database().ref('Recommendation/'+phoneNoFromNotif.toString());
 	newRegdataRef = regdataRef.push();
+	if(splits[1]!=''&&splits[3]!=''&&splits[5]!=''){
 	newRegdataRef.set({
-		isBought: 0, Name: splits[3], Description: splits[5], Cost: splits[7]
+		isBought: 0, Name: splits[1], Description: splits[3], Cost: splits[5]
 	});
+}
   swal.resetDefaults();
   swal({
   title: 'Thanks!',
@@ -245,6 +258,11 @@ swal.queue(steps).then((result) => {
    
   }
 })
+   
+})
+  }
+	
+	
 });	
 		
 }

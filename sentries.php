@@ -73,7 +73,7 @@ echo '						 View
 						Update Solution
 						</button>';
 echo '		 <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" 
-	onclick="generateRefer();">
+	onclick="generateRefer('.$parts[0].');">
 					  Recommendation
 						 </button>
 						 </div>
@@ -134,7 +134,7 @@ echo '						 View
 						Update Solution
 						</button>';
 echo '		 <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" 
-	onclick="generateRefer();">
+	onclick="generateRefer('.$parts[0].');">
 					  Recommendation
 						 </button>
 						 </div>
@@ -207,7 +207,7 @@ echo '						 View
 						Give Solution
 						</button>';
 echo '		 <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" 
-	onclick="generateRefer();">
+	onclick="generateRefer('.$parts[0].');">
 					  Recommendation
 						 </button>
 						 </div>
@@ -269,7 +269,7 @@ echo '						 View
 						Give Solution
 						</button>';
 echo '		 <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" 
-	onclick="generateRefer();">
+	onclick="generateRefer('.$parts[0].');">
 					  Recommendation
 						 </button>
 						 </div>
